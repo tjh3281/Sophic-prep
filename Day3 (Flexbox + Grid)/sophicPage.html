@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sophic Automation — Components</title>
+    <!-- Day 2 upgrade: CSS lives in its own file now, linked in -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <!-- TODO (flexbox): logo on the left, links in a row on the right -->
+    <header class="navbar">
+      <a href="#" class="logo">Sophic<span class="logo-accent">Automation</span></a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact" class="nav-cta">Contact Us</a>
+      </nav>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <!-- TODO (flexbox): center this content vertically + horizontally -->
+    <section class="hero">
+      <h1>We Make Machines Sing</h1>
+      <p>
+        Test engineering and automation solutions for the semiconductor industry in Penang and
+        beyond.
+      </p>
+      <a href="#services" class="btn">Explore Services</a>
+    </section>
+
+    <!-- ===================== CARD GRID ===================== -->
+    <!-- TODO (grid): 3 columns on desktop — right now they just stack -->
+    <section class="services" id="services">
+      <h2>What We Do</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Test Engineering</h3>
+          <p>
+            Design and development of automated test equipment for semiconductor manufacturing
+            lines.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Software Solutions</h3>
+          <p>
+            Custom software that connects machines, collects data, and keeps production running
+            smoothly.
+          </p>
+        </article>
+        <article class="card">
+          <h3>IT Support</h3>
+          <p>
+            Infrastructure, WordPress sites, and internal tooling support for engineering teams.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Vision Systems</h3>
+          <p>Machine vision inspection systems that catch defects human eyes would miss.</p>
+        </article>
+        <article class="card">
+          <h3>Robotics Integration</h3>
+          <p>
+            Robotic handlers and automation cells integrated directly into existing production
+            floors.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Consulting</h3>
+          <p>
+            Helping factories figure out what to automate first — and what not to automate at all.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <!-- TODO (flexbox or grid): 3 columns side by side, then the copyright line below -->
+    <footer class="footer" id="contact">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Sophic Automation</h4>
+          <p>Bayan Lepas, Penang, Malaysia</p>
+        </div>
+        <div class="footer-col">
+          <h4>Links</h4>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#careers">Careers</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>hello@sophic.example</p>
+          <p>+60 4-000 0000</p>
+        </div>
+      </div>
+      <p class="copyright">© 2026 Sophic Automation. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

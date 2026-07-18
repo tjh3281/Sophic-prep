@@ -1,0 +1,190 @@
+/* =====================================================
+   Day 1 + 2 knowledge: reset, palette, typography, boxes.
+   Day 3 (YOUR JOB): find every "TODO" and fix the layout
+   with flexbox or grid. Nothing else needs to change.
+   ===================================================== */
+
+/* --- Simple reset (Day 2) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Palette + base typography (Day 2) --- */
+body {
+  font-family: Arial, sans-serif;
+  color: #1f2933;
+  background-color: #f5f7fa;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar {
+  background-color: #102a43;
+  color: #ffffff;
+  padding: 16px 32px;
+
+  /* TODO (flexbox): make the logo and links sit on one row,
+     logo left, links right, everything vertically centered. */
+  
+  display:flex;
+  justify-content: space-between;
+  align-items : center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo-accent {
+  color: #4bafdd;
+}
+
+.nav-links {
+  /* TODO (flexbox): make the links sit on one row with a 16px gap. */
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  display: block; /* stacked for now — flexbox will fix this */
+  padding: 8px 0;
+  color: #d9e2ec;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-cta {
+  background-color: #4bafdd;
+  color: #102a43;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  background-color: #243b53;
+  color: #ffffff;
+  padding: 48px 32px;
+  min-height: 320px;
+
+  /* TODO (flexbox): stack the h1, p, and button in a column
+     and center them both vertically and horizontally.
+     Hint: flex-direction, justify-content, align-items. */
+
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #bcccdc;
+  max-width: 480px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  background-color: #4bafdd;
+  color: #102a43;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #81d4fa;
+}
+
+/* ===================== CARD GRID ===================== */
+.services {
+  padding: 48px 32px;
+  max-width: 1100px;
+  margin: 0 auto; /* Day 2 trick: center a block element */
+}
+
+.services h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #102a43;
+}
+
+.card-grid {
+  /* TODO (grid): 3 equal columns with a 24px gap.
+     Hint: display, grid-template-columns, gap.
+     Bonus: what does repeat(3, 1fr) mean? */
+
+     display
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px; /* delete this once grid's gap handles spacing */
+}
+
+.card h3 {
+  color: #102a43;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #486581;
+  font-size: 15px;
+}
+
+/* ===================== FOOTER ===================== */
+.footer {
+  background-color: #102a43;
+  color: #d9e2ec;
+  padding: 40px 32px 24px;
+}
+
+.footer-columns {
+  /* TODO (flexbox or grid — your choice): put the three
+     .footer-col blocks side by side with space between them. */
+  margin-bottom: 24px;
+}
+
+.footer-col {
+  margin-bottom: 24px;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.footer-col a {
+  display: block;
+  padding: 4px 0;
+}
+
+.footer-col a:hover {
+  color: #4fc3f7;
+}
+
+.copyright {
+  border-top: 1px solid #243b53;
+  padding-top: 16px;
+  font-size: 14px;
+  color: #829ab1;
+}
