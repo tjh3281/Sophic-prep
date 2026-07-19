@@ -130,7 +130,9 @@ a {
      Hint: display, grid-template-columns, gap.
      Bonus: what does repeat(3, 1fr) mean? */
 
-     display
+     display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
 }
 
 .card {
@@ -138,7 +140,6 @@ a {
   border: 1px solid #d9e2ec;
   border-radius: 8px;
   padding: 24px;
-  margin-bottom: 16px; /* delete this once grid's gap handles spacing */
 }
 
 .card h3 {
@@ -161,7 +162,8 @@ a {
 .footer-columns {
   /* TODO (flexbox or grid — your choice): put the three
      .footer-col blocks side by side with space between them. */
-  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer-col {
