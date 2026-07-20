@@ -13,7 +13,7 @@
 | 1   | HTML structure         | `about.html` — valid, semantic, unstyled      |  ✅  |
 | 2   | CSS fundamentals       | Same page, styled with a real palette         |  ✅  |
 | 3   | Flexbox + Grid         | `components.html` — navbar, card grid, footer |  ✅  |
-| 4   | Responsive design      | Components that work on a phone               |  ⬜  |
+| 4   | Responsive design      | Components that work on a phone               |  ✅  |
 | 5   | Full landing page      | Hand-coded B2B marketing site                 |  ⬜  |
 | 6   | JS syntax (from Java)  | `js-basics.js` + Java→JS cheat sheet          |  ⬜  |
 | 7   | DOM + events           | Landing page with 4 interactions              |  ⬜  |

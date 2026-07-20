@@ -1,0 +1,255 @@
+/* =====================================================
+   Day 4 — RESPONSIVE DESIGN
+   The base below is your finished Day 3 layout (desktop-first).
+   Your job: scroll to the bottom "DAY 4 — YOUR JOB" section and
+   add media queries so this page works on a phone.
+   Test by opening DevTools (F12) → the phone/tablet icon.
+   ===================================================== */
+
+/* --- Simple reset (Day 2) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Palette + base typography (Day 2) --- */
+body {
+  font-family: Arial, sans-serif;
+  color: #1f2933;
+  background-color: #f5f7fa;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar {
+  background-color: #102a43;
+  color: #ffffff;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo-accent {
+  color: #4bafdd;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  display: block;
+  padding: 8px 0;
+  color: #d9e2ec;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-cta {
+  background-color: #4bafdd;
+  color: #102a43;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  background-color: #243b53;
+  color: #ffffff;
+  padding: 48px 32px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #bcccdc;
+  max-width: 480px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  background-color: #4bafdd;
+  color: #102a43;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #81d4fa;
+}
+
+/* ===================== CARD GRID ===================== */
+.services {
+  padding: 48px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.services h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #102a43;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.card h3 {
+  color: #102a43;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #486581;
+  font-size: 15px;
+}
+
+/* ===================== FOOTER ===================== */
+.footer {
+  background-color: #102a43;
+  color: #d9e2ec;
+  padding: 40px 32px 24px;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-col {
+  margin-bottom: 24px;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.footer-col a {
+  display: block;
+  padding: 4px 0;
+}
+
+.footer-col a:hover {
+  color: #4fc3f7;
+}
+
+.copyright {
+  border-top: 1px solid #243b53;
+  padding-top: 16px;
+  font-size: 14px;
+  color: #829ab1;
+}
+
+/* =====================================================
+   ===============  DAY 4 — YOUR JOB  ==================
+   Everything above is desktop. Add your responsive rules
+   BELOW so they override it on smaller screens.
+
+   Golden rule: a media query is just "when the screen is
+   this size, ALSO apply these rules." Same CSS you already
+   know, wrapped in an @media block.
+
+       @media (max-width: 768px) {
+         .selector { property: value; }
+       }
+
+   Common breakpoints to aim at:
+     • ~1024px  tablet / small laptop
+     • ~768px   tablet portrait
+     • ~480px   phone
+
+   TASK LIST (delete each line as you finish it):
+     [ ] 0. Add the viewport meta tag in sophicPage.html (top task).
+     [ ] 1. TABLET (max-width: 1024px): card-grid → 2 columns.
+     [ ] 2. PHONE  (max-width: 768px):  card-grid → 1 column.
+     [ ] 3. PHONE: navbar stacks (flex-direction: column) OR nav-links wrap.
+     [ ] 4. PHONE: shrink .hero h1 (e.g. 28px) and hero padding.
+     [ ] 5. PHONE: footer-columns stack (flex-direction: column).
+     [ ] 6. PHONE: trim the big 32px side paddings so nothing is cramped.
+     [ ] 7. BONUS: replace the card-grid columns with the no-media-query
+            one-liner and delete tasks 1–2:
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   ===================================================== */
+
+/* --- Tablet (601–900px): 2 columns --- */
+@media (min-width: 601px) and (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Phone (<=600px): single column + stacked layout --- */
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  /* Task 5: footer columns stack instead of sitting side by side */
+  .footer-columns {
+    flex-direction: column;
+  }
+
+  /* Task 6: trim the wide 32px side paddings so nothing is cramped */
+  .services {
+    padding: 32px 20px;
+  }
+
+  .footer {
+    padding: 32px 20px 20px;
+  }
+}
