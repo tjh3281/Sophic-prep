@@ -1,0 +1,441 @@
+/* =====================================================
+   Day 5 — FULL LANDING PAGE
+   Same page-parts as Day 4, but rewritten the way a real site is built:
+     • every colour and spacing value is a TOKEN in :root
+     • .container and .section carry the whole layout
+     • .btn + variants instead of a new button per section
+   Sections you already built (nav, hero, cards, footer) are finished below
+   as your reference. Scroll to "DAY 5 — YOUR JOB" for today's task list.
+   ===================================================== */
+
+/* ===================== TOKENS (notes §3) =====================
+   Declared on :root (= the <html> element) so the whole document sees them.
+   Read them anywhere with var(--name). Change the brand blue here and the
+   ENTIRE page follows — that's the whole point. */
+:root {
+  /* palette — same colours as Day 2/3/4, now named */
+  --navy-900: #102a43;
+  --navy-700: #243b53;
+  --blue-400: #4bafdd;
+  --blue-200: #81d4fa;
+  --grey-600: #486581;
+  --grey-400: #829ab1;
+  --grey-300: #d9e2ec;
+  --grey-200: #f0f4f8;
+  --ink: #1f2933;
+  --surface: #f5f7fa;
+  --white: #ffffff;
+
+  /* spacing scale — pick from these, never invent a random 37px */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 72px;
+
+  /* everything else */
+  --radius: 8px;
+  --max-width: 1100px;
+  --shadow: 0 1px 3px rgba(16, 42, 67, 0.08);
+}
+
+/* ===================== RESET + BASE (Day 2) ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* #anchor links glide instead of jumping */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--ink);
+  background-color: var(--white);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%; /* Day 4 §4 — images never blow out their box */
+  height: auto;
+}
+
+/* Keyboard users get a visible ring; mouse users don't see it.
+   NEVER write `outline: none` without a replacement like this. */
+:focus-visible {
+  outline: 3px solid var(--blue-400);
+  outline-offset: 2px;
+}
+
+/* Off-screen until it receives focus, then it slides in. */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-sm);
+  z-index: 20;
+  background-color: var(--blue-400);
+  color: var(--navy-900);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius);
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+/* ===================== LAYOUT UTILITIES (notes §4) =====================
+   These two classes do 80% of the work on this page.
+   .container = centred, capped-width content column
+   .section   = the vertical rhythm every section shares */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+/* Stops a sticky navbar covering the heading when you click an #anchor. */
+.section,
+.hero {
+  scroll-margin-top: 80px;
+}
+
+/* ===================== SHARED TEXT BITS ===================== */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--blue-400);
+  margin-bottom: var(--space-xs);
+}
+
+h2 {
+  font-size: 32px;
+  color: var(--navy-900);
+  line-height: 1.25;
+}
+
+.section-sub {
+  color: var(--grey-600);
+  max-width: 560px; /* long lines are hard to read — cap them */
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+/* ===================== BUTTON SYSTEM (notes §5) =====================
+   .btn = the shape. .btn-primary / .btn-ghost = the paint.
+   Use two classes together: class="btn btn-primary" */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--blue-400);
+  color: var(--navy-900);
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-200);
+}
+
+.btn-ghost {
+  border-color: var(--blue-400);
+  color: var(--blue-400);
+}
+
+.btn-ghost:hover {
+  background-color: var(--blue-400);
+  color: var(--navy-900);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+/* ===================== 1. NAVBAR (Day 3/4 + sticky) ===================== */
+.navbar {
+  background-color: var(--navy-900);
+  color: var(--white);
+  position: sticky; /* normal in flow until it hits top: 0, then it pins */
+  top: 0; /* sticky does NOTHING without this */
+  z-index: 10; /* stay above content scrolling underneath */
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo-accent {
+  color: var(--blue-400);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap; /* Day 4 §4 — wraps before it overflows */
+}
+
+.nav-links a {
+  color: var(--grey-300);
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+
+.nav-links .btn:hover {
+  color: var(--navy-900); /* the CTA keeps its own hover, not the link one */
+}
+
+/* ===================== 2. HERO ===================== */
+.hero {
+  background-color: var(--navy-700);
+  color: var(--white);
+  padding: 96px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 44px;
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+}
+
+.hero-sub {
+  color: var(--grey-300);
+  font-size: 18px;
+  max-width: 560px;
+  margin: 0 auto var(--space-lg); /* auto left/right centres the block */
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap; /* second button drops below on a phone */
+}
+
+/* ===================== 4. SERVICES GRID (Day 3/4) ===================== */
+.services {
+  background-color: var(--surface);
+}
+
+.card-grid {
+  display: grid;
+  /* Day 4 bonus: this ONE line replaces the 3→2→1 media queries. */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--grey-300);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  color: var(--navy-900);
+  margin-bottom: var(--space-xs);
+}
+
+.card p {
+  color: var(--grey-600);
+  font-size: 15px;
+}
+
+/* ===================== 10. FOOTER (Day 3/4) ===================== */
+.footer {
+  background-color: var(--navy-900);
+  color: var(--grey-300);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  margin-bottom: var(--space-md);
+}
+
+.footer-col h4 {
+  color: var(--white);
+  margin-bottom: var(--space-xs);
+}
+
+.footer-col a {
+  display: block;
+  padding: 4px 0;
+}
+
+.footer-col a:hover {
+  color: var(--blue-400);
+}
+
+.copyright {
+  border-top: 1px solid var(--navy-700);
+  padding-top: var(--space-md);
+  font-size: 14px;
+  color: var(--grey-400);
+}
+
+/* =====================================================
+   ===============  DAY 5 — YOUR JOB  ==================
+   Write the CSS for the sections you added to index.html.
+   Keep them in page order — a stylesheet that matches the
+   document order is a stylesheet you can still read in Day 15.
+
+   HOUSE RULES for today:
+     • No raw hex codes down here. If you need a colour, it's a
+       var(--token) — and if the token doesn't exist, add it to
+       :root at the top.
+     • No new spacing numbers. Use --space-xs … --space-xl.
+     • Reuse .container / .section / .btn instead of re-inventing
+       padding and buttons per section.
+
+   ---- CORE: the 30-minute version. Do these three. ----
+     [ ] 3. STATS BAND — dark background (--navy-900), light text,
+            .stats-grid = 4 equal columns, text-align: center.
+            .stat-number big + bold (~40px), .stat-label small + --grey-400.
+            This is THE section to build: it's the one that teaches a
+            full-bleed background with a .container inside it.
+     [ ] 5. CTA BAND — full-width accent/dark strip, centred, one button.
+            Time yourself: if the button needs any CSS at all, you've
+            missed the point of .btn. It should be markup only.
+     [ ] 7. RESPONSIVE PASS — fill in the two media queries below by
+            dragging the window narrow until something looks wrong.
+
+   ---- OPTIONAL: only if you still have time. ----
+     [ ] 0. Meta description in index.html (comes back on Day 13 anyway).
+     [ ] 1. TRUST BAR — .trust (light background, small centred text),
+            .trust-list as flex + wrap + gap, list-style: none, muted.
+     [ ] 2. HOW IT WORKS — .steps grid, 3 columns.
+            Numbers via CSS counters:
+              .steps { counter-reset: step; list-style: none; }
+              .step::before { counter-increment: step; content: counter(step); }
+            Style that ::before as a circle: fixed width/height, equal
+            border-radius: 50%, centred text, blue background.
+     [ ] 4. TESTIMONIAL — centred, max-width ~700px, font-size ~24px,
+            line-height ~1.4. Style <cite> smaller, not italic, muted.
+            Bonus: a huge “ via .quote::before with opacity.
+     [ ] 6. CONTACT FORM — .form-row as a 2-column grid,
+            inputs at width: 100% with `font: inherit` (notes §7 — this is
+            the line everyone forgets), labels as display: block + margin.
+            You rebuild this properly on Day 8 with real validation.
+
+   Stuck on a recipe? Every one of these is in landing-page-notes.md §7.
+   ===================================================== */
+
+/* ---------- your section styles go here ---------- */
+
+/* ===================== 6. STATS BAND (task 3) =====================
+   Note what ISN'T here: no padding, no max-width, no centring. The
+   .section class already gave it vertical rhythm and .container already
+   capped and centred the content. This block only does colour + grid. */
+.stats {
+  background-color: var(--navy-900);
+  color: var(--white);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal shares of the row */
+  gap: var(--space-md);
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.1; /* the 1.6 from body is too airy for display type */
+  color: var(--blue-400);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--grey-400);
+}
+
+/* ===================== 8. CTA BAND (task 5) ===================== */
+.cta {
+  background-color: var(--navy-700);
+  color: var(--white);
+  text-align: center;
+}
+
+/* GOTCHA: the global `h2 { color: var(--navy-900) }` up top would paint
+   this heading navy-on-navy — a heading that's technically there but
+   invisible. Any section with a dark background has to re-state it. */
+.cta h2 {
+  color: var(--white);
+}
+
+.cta-sub {
+  color: var(--grey-300);
+  max-width: 520px;
+  /* top | left+right | bottom. `auto` on the sides centres the block,
+     which is what actually centres this paragraph — text-align only
+     centres the text INSIDE the box, not the box itself. */
+  margin: var(--space-sm) auto var(--space-md);
+}
+
+/* ===================== RESPONSIVE (Day 4, applied) =====================
+   Keep ALL media queries at the bottom so they win the source-order tie.
+   One rule can list several selectors — that's how a whole page collapses
+   to one column in about eight lines. */
+
+/* --- Tablet --- */
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* TODO: add .steps here too if you build the process section */
+}
+
+/* --- Phone --- */
+@media (max-width: 600px) {
+  /* .stats-grid is deliberately NOT here. A 600px-wide screen still
+     matches `max-width: 900px`, so it stays at 2 columns — and 2x2 short
+     numbers reads better than one 4-storey tower. The task list said 1fr;
+     the drag test said 2. The drag test wins (Day 4 notes, §3). */
+
+  /* TODO: .steps, .form-row → 1fr
+           .section padding → var(--space-lg) 0
+           .hero  padding → var(--space-lg) 0
+           .hero h1 → ~30px, h2 → ~26px
+           .navbar-inner → flex-direction: column (or let nav-links wrap) */
+}

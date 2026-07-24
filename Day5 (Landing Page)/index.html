@@ -1,0 +1,242 @@
+<!doctype html>
+<!-- =====================================================
+     Day 5 — FULL LANDING PAGE
+     Named index.html (not sophicPage.html) on purpose: index.html is the
+     file a web server hands out by default when someone visits a folder.
+     Day 14 deploys this, so it needs the right name.
+
+     Sections 1, 2, 4 and 10 are carried forward from Day 3/4 — you already
+     built those, they're here so you can see the pattern.
+
+     30-MINUTE VERSION: write section 6 (stats) and section 8 (CTA band).
+     Those two are marked CORE below. Everything marked OPTIONAL can wait.
+     Full plan: landing-page-notes.md §10.
+     ===================================================== -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sophic Automation — Test Engineering &amp; Automation, Penang</title>
+
+    <!-- TODO (Day 5, task 0): add a meta description.
+         It's the grey text Google shows under your title. ~155 characters,
+         says what the company does. You'll be graded on this again in Day 13 (SEO).
+         Hint: <meta name="description" content="..." /> -->
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Accessibility: first thing in the body, hidden until focused.
+         Tab once on the loaded page and it appears. See notes §6. -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ===================== 1. NAVBAR (carried from Day 4) ===================== -->
+    <!-- New today: position: sticky in the CSS so it follows you down the page. -->
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="#" class="logo">Sophic<span class="logo-accent">Automation</span></a>
+        <nav class="nav-links" aria-label="Main">
+          <a href="#services">Services</a>
+          <a href="#process">How It Works</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="btn btn-primary btn-sm">Talk to an Engineer</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Everything between the nav and the footer lives in ONE <main>. -->
+    <main id="main">
+      <!-- ===================== 2. HERO (upgraded from Day 4) ===================== -->
+      <!-- Day 4 had one button. A real hero has a primary + a secondary. -->
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">Penang · Semiconductor Automation</p>
+          <h1>We Make Machines Sing</h1>
+          <p class="hero-sub">
+            Test engineering, machine vision and factory software for semiconductor manufacturers —
+            designed, built and supported in Bayan Lepas.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Talk to an Engineer</a>
+            <a href="#services" class="btn btn-ghost">See Our Services</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 3. TRUST BAR ===================== -->
+      <!-- TODO (task 1) — OPTIONAL: the "real companies use us" strip.
+           Structure: <section class="trust"> > .container > a small line of
+           text ("Trusted by manufacturers across the Northern Corridor") and
+           a <ul class="trust-list"> of 4-5 <li> company names.
+           No real logos needed — text names are fine today.
+           CSS recipe is in the notes, §7 "Trust bar". -->
+
+      <!-- ===================== 4. SERVICES GRID (carried from Day 3/4) ===================== -->
+      <section class="section services" id="services">
+        <div class="container">
+          <p class="eyebrow">What We Do</p>
+          <h2>Automation, end to end</h2>
+          <p class="section-sub">
+            From the first feasibility study to the support ticket three years later.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <h3>Test Engineering</h3>
+              <p>
+                Design and development of automated test equipment for semiconductor manufacturing
+                lines.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Software Solutions</h3>
+              <p>
+                Custom software that connects machines, collects data, and keeps production running
+                smoothly.
+              </p>
+            </article>
+            <article class="card">
+              <h3>IT Support</h3>
+              <p>
+                Infrastructure, WordPress sites, and internal tooling support for engineering teams.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Vision Systems</h3>
+              <p>Machine vision inspection systems that catch defects human eyes would miss.</p>
+            </article>
+            <article class="card">
+              <h3>Robotics Integration</h3>
+              <p>
+                Robotic handlers and automation cells integrated directly into existing production
+                floors.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Consulting</h3>
+              <p>
+                Helping factories figure out what to automate first — and what not to automate at
+                all.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 5. HOW IT WORKS ===================== -->
+      <!-- TODO (task 2) — OPTIONAL: a 3-step process section, id="process".
+           Shape: <section class="section process" id="process"> > .container >
+             eyebrow + h2 + section-sub
+             <ol class="steps">  ← an ORDERED list, because order is the point
+               <li class="step"><h3>Assess</h3><p>...</p></li>
+               ... Design ... Deploy & Support ...
+             </ol>
+           The step NUMBERS come from CSS (counter + ::before), not from typing
+           "1." — see notes §7. Try it; if the counter fights you, ship plain
+           <h3>1. Assess</h3> and come back to it. -->
+
+      <!-- ===================== 6. STATS BAND (task 3) =====================
+           THE pattern to learn here:
+             <section>  = full-bleed, edge-to-edge dark background
+               .container = holds the text at a readable width, centred
+           Outer element paints, inner element constrains. Every marketing
+           site on the internet is built this way. -->
+      <section class="section stats">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat">
+              <p class="stat-number">120+</p>
+              <p class="stat-label">Systems delivered</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number">15</p>
+              <p class="stat-label">Years in Penang</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number">40</p>
+              <p class="stat-label">Engineers on staff</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number">99.2%</p>
+              <p class="stat-label">Line uptime</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 7. TESTIMONIAL ===================== -->
+      <!-- TODO (task 4) — OPTIONAL: one quote, centred, large type.
+           Correct tags:
+             <blockquote class="quote"><p>“...”</p></blockquote>
+             <cite class="quote-author">Name, Title — Company</cite>
+           Invent the quote (it's a practice page) but keep it specific:
+           "cut our changeover time by 40%" beats "great service". -->
+
+      <!-- ===================== 8. CTA BAND (task 5) =====================
+           Three elements. Count the button CSS you had to write: zero.
+           `class="btn btn-primary"` is the entire styling of that link —
+           that is what a button system buys you. -->
+      <section class="section cta">
+        <div class="container">
+          <h2>Ready to automate a line?</h2>
+          <p class="cta-sub">
+            Tell us what the line does today and we'll tell you what's worth automating first.
+          </p>
+          <a href="#contact" class="btn btn-primary">Talk to an Engineer</a>
+        </div>
+      </section>
+
+      <!-- ===================== 9. CONTACT ===================== -->
+      <!-- TODO (task 6) — OPTIONAL (rebuilt properly on Day 8): the
+           conversion point, id="contact".
+           <form class="contact-form"> with:
+             .form-row (2 columns): Name + Email
+             full width: Company
+             full width: <textarea> Message
+             a submit <button class="btn btn-primary" type="submit">
+           EVERY input needs its own <label for="x"> and matching id="x".
+           Add `required` and type="email" — free browser validation, no JS.
+           No JavaScript today; making it actually send is Day 8. -->
+
+      <!-- Small stub so the #about nav link isn't broken. Expand it if you
+           have time left over. -->
+      <section class="section about" id="about">
+        <div class="container">
+          <p class="eyebrow">About</p>
+          <h2>Engineers, not resellers</h2>
+          <p class="section-sub">
+            Sophic Automation builds its own hardware and software from Bayan Lepas, Penang.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== 10. FOOTER (carried from Day 4) ===================== -->
+    <!-- id="contact" lives here for now so the nav + CTA links land somewhere.
+         When you build the contact form (task 6), move the id onto that
+         section instead — an id must be unique on the page. -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h4>Sophic Automation</h4>
+            <p>Bayan Lepas, Penang, Malaysia</p>
+          </div>
+          <div class="footer-col">
+            <h4>Links</h4>
+            <a href="#services">Services</a>
+            <a href="#process">How It Works</a>
+            <a href="#about">About</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <p>hello@sophic.example</p>
+            <p>+60 4-000 0000</p>
+          </div>
+        </div>
+        <p class="copyright">© 2026 Sophic Automation. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
